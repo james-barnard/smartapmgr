@@ -18,7 +18,7 @@
 
   <tbody>
     <% @smartaps.each do |machine| %>
-      <% machine.loads do |tap| %>
+      <% machine.loads.each do |tap| %>
         <tr>
           <td><%= tap.machine.serial_number %></td>
           <td><%= tap.machine.version %></td>
@@ -27,7 +27,7 @@
           <td><%= tap.avg_daily %></td>
           <td><%= tap.avg_size %></td>
           <td><%= tap.ounces_remaining %></td>
-          <td><%= tap.last_loaded %></td>
+          <td><%= tap.loaded_at %></td>
         </tr>
       <% end %>
     <% end %>
