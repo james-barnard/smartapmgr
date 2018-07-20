@@ -19,15 +19,15 @@
   <tbody>
     <% @smartaps.each do |machine| %>
       <% machine.loads do |tap| %>
-      <tr>
-        <td><%= machine.serial_number %></td>
-        <td><%= machine.version %></td>
-        <td><%= machine.last_location_name %></td>
-        <td><%= tap.meter_number %></td>
-        <td><%= tap.avg_daily %></td>
-        <td><%= tap.avg_size %></td>
-        <td><%= tap.ounces_remaining %></td>
-        <td><%= tap.last_loaded %></td>
+        <tr>
+          <td><%= tap.machine.serial_number %></td>
+          <td><%= tap.machine.version %></td>
+          <td><%= tap.machine.last_location_name %></td>
+          <td><%= tap.meter_number %></td>
+          <td><%= tap.avg_daily %></td>
+          <td><%= tap.avg_size %></td>
+          <td><%= tap.ounces_remaining %></td>
+          <td><%= tap.last_loaded %></td>
         </tr>
       <% end %>
     <% end %>
