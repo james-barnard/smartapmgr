@@ -4,7 +4,7 @@ class PoursController < ApplicationController
   # GET /pours
   # GET /pours.json
   def index
-    @pours = Pour.all
+    @pours = Pour.order('created_at desc').limit(20).all.select { |pour| pour.ounces > 1 }
   end
 
   # GET /pours/1
