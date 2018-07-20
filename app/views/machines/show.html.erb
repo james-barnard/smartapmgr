@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @machine.owner.name %>
+</p>
+
+<p>
+  <strong>Serial Number:</strong>
+  <%= @machine.serial_number %>
+</p>
+
+<p>
+  <strong>Particle Device Id:</strong>
+  <%= @machine.device_id %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @machine.version %>
+</p>
+
+<p>
+  <strong> #Meters:</strong>
+  <%= @machine.meter_count %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

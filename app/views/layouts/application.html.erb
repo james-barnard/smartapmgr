@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Smartapmgr" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Smartapmgr" %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <%= render 'layouts/shim' %>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+  <%= render 'layouts/header' %>
+    <div class="container">
+      <div class="row">
+        <nav class='col-lg-2 bg-light sidebar'>
+          <%= render 'layouts/sidebar' %>
+        </nav>
+        <main class='col-lg-10 pt-3 px-4'>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
   </body>
+  <%= render 'layouts/footer' %>
 </html>

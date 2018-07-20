@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @placement.location_id %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @placement.machine_id %>
+</p>
+
+<p>
+  <strong>Placed at:</strong>
+  <%= @placement.placed_at %>
+</p>
+
+<p>
+  <strong>Removed at:</strong>
+  <%= @placement.removed_at %>
+</p>
+
+<%= link_to 'Edit', edit_placement_path(@placement) %> |
+<%= link_to 'Back', placements_path %>

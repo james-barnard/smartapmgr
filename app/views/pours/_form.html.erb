@@ -1,0 +1,32 @@
+<%= form_with(model: pour, local: true) do |form| %>
+  <% if pour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pour.errors.count, "error") %> prohibited this pour from being saved:</h2>
+
+      <ul>
+      <% pour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ounces %>
+    <%= form.text_field :ounces, id: :pour_ounces %>
+  </div>
+
+  <div class="field">
+    <%= form.label :started_at %>
+    <%= form.datetime_select :started_at, id: :pour_started_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ended_at %>
+    <%= form.datetime_select :ended_at, id: :pour_ended_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

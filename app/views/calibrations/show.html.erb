@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @calibration.machine %>
+</p>
+
+<p>
+  <strong>Meter number:</strong>
+  <%= @calibration.meter_number %>
+</p>
+
+<p>
+  <strong>Meter Constant:</strong>
+  <%= @calibration.constant %>
+</p>
+
+<%= link_to 'Edit', edit_calibration_path(@calibration) %> |
+<%= link_to 'Back', calibrations_path %>

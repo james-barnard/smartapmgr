@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ticks</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='row' >Machine</th>
+      <th scope='row' >Meter</th>
+      <th scope='row' >Pour</th>
+      <th scope='row' >Count</th>
+      <th scope='row' >Reported at</th>
+      <th scope='row' ></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ticks.each do |tick| %>
+      <tr>
+        <td><%= tick.machine.serial_number %></td>
+        <td><%= tick.meter_number %></td>
+        <td><%= tick.pour_id %></td>
+        <td><%= tick.count %></td>
+        <td><%= tick.reported_at %></td>
+        <td><%= link_to 'Destroy', tick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tick', new_tick_path %>

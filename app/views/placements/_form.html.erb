@@ -1,0 +1,37 @@
+<%= form_with(model: placement, local: true) do |form| %>
+  <% if placement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(placement.errors.count, "error") %> prohibited this placement from being saved:</h2>
+
+      <ul>
+      <% placement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.number_field :location_id, id: :placement_location_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_id %>
+    <%= form.number_field :machine_id, id: :placement_machine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :placed_at %>
+    <%= form.datetime_select :placed_at, id: :placement_placed_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :removed_at %>
+    <%= form.datetime_select :removed_at, id: :placement_removed_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

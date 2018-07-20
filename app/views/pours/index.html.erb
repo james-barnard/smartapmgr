@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pours</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>Machine</th>
+      <th scope='col'>Meter</th>
+      <th scope='col'>Ounces</th>
+      <th scope='col'>Started at</th>
+      <th scope='col'>Ended at</th>
+      <th colspan="3" scope='col'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pours.each do |pour| %>
+      <tr>
+        <td><%= pour.load.machine_id %></td>
+        <td><%= pour.load.meter_number %></td>
+        <td><%= pour.ounces %></td>
+        <td><%= pour.started_at %></td>
+        <td><%= pour.ended_at %></td>
+        <td><%= link_to 'Show', pour %></td>
+        <td><%= link_to 'Edit', edit_pour_path(pour) %></td>
+        <td><%= link_to 'Destroy', pour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pour', new_pour_path %>

@@ -1,0 +1,32 @@
+<%= form_with(model: calibration, local: true) do |form| %>
+  <% if calibration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calibration.errors.count, "error") %> prohibited this calibration from being saved:</h2>
+
+      <ul>
+      <% calibration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :machine_id %>
+    <%= form.text_field :machine_id, id: :calibration_machine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meter_number %>
+    <%= form.number_field :meter_number, id: :calibration_meter_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :constant %>
+    <%= form.number_field :constant, id: :calibration_meter_constant %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

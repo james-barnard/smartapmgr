@@ -1,0 +1,62 @@
+<%= form_with(model: location, local: true) do |form| %>
+  <% if location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :owner_id %>
+    <%= form.number_field :owner_id, id: :location_owner_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :location_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address1 %>
+    <%= form.text_field :address1, id: :location_address1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address2 %>
+    <%= form.text_field :address2, id: :location_address2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :location_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state, id: :location_state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip %>
+    <%= form.text_field :zip, id: :location_zip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_field :contact, id: :location_contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_phone %>
+    <%= form.text_field :contact_phone, id: :location_contact_phone %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

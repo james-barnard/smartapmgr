@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loads</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='row'>Machine</th>
+      <th scope='row'>Product</th>
+      <th scope='row'>Meter</th>
+      <th scope='row'>Loaded at</th>
+      <th scope='row'>Total Ounces</th>
+      <th scope='row'>Total Poured</th>
+      <th scope='row'>Remaining</th>
+      <th scope='row'>Removed at</th>
+      <th colspan="3" scope='row'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.machine_id %></td>
+        <td><%= load.product_name %></td>
+        <td><%= load.meter_number %></td>
+        <td><%= load.loaded_at %></td>
+        <td><%= load.ounces %></td>
+        <td><%= load.total_poured %></td>
+        <td><%= load.ounces_remaining %></td>
+        <td><%= load.removed_at %></td>
+        <td><%= link_to 'Show', load %></td>
+        <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load', new_load_path %>

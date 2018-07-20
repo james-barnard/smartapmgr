@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @load.product_id %>
+</p>
+
+<p>
+  <strong>Meter:</strong>
+  <%= @load.meter_number %>
+</p>
+
+<p>
+  <strong>Loaded at:</strong>
+  <%= @load.loaded_at %>
+</p>
+
+<p>
+  <strong>Ounces:</strong>
+  <%= @load.ounces %>
+</p>
+
+<p>
+  <strong>Removed at:</strong>
+  <%= @load.removed_at %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>

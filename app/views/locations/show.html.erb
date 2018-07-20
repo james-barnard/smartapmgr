@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @location.owner_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @location.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @location.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @location.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @location.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @location.zip %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @location.contact %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @location.contact_phone %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

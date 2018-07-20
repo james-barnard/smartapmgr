@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ounces:</strong>
+  <%= @pour.ounces %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @pour.started_at %>
+</p>
+
+<p>
+  <strong>Ended at:</strong>
+  <%= @pour.ended_at %>
+</p>
+
+<%= link_to 'Edit', edit_pour_path(@pour) %> |
+<%= link_to 'Back', pours_path %>

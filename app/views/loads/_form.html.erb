@@ -1,0 +1,53 @@
+<%= form_with(model: load, local: true) do |form| %>
+  <% if load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load.errors.count, "error") %> prohibited this load from being saved:</h2>
+
+      <ul>
+      <% load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :machine_id %>
+    <%= form.select(:machine_id, options_from_collection_for_select(Machine.all, :id, :serial_number)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.select(:product_id, options_from_collection_for_select(Product.all, :id, :name)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meter_number %>
+    <%= form.select(:meter_number, options_for_select((1..3))) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loaded_at %>
+    <%= form.datetime_select :loaded_at, id: :load_loaded_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ounces %>
+    <%= form.text_field :ounces, id: :load_ounces %>
+  </div>
+
+  <div>
+    <% if :removed_at.nil? %>
+      <%= hidden_field_tag(:removed, "false") %>
+    <% else %>
+      <p>
+        <strong>Removed at:</strong>
+        <%= :removed_at %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

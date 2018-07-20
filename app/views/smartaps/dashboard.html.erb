@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>SmarTaps Installed</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>Serial number</th>
+      <th scope='col'>Version</th>
+      <th scope='col'>Location</th>
+      <th scope='col'>Taps</th>
+      <th scope='col'>Remaining Load</th>
+      <th scope='col'>Date Last Loaded</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @smartaps.each do |tap| %>
+      <tr>
+        <td><%= tap.serial_number %></td>
+        <td><%= tap.version %></td>
+        <td><%= tap.last_location_name %></td>
+        <td><%= tap.meter_count %></td>
+        <td><%= tap.ounces_remaining %></td>
+        <td><%= tap.last_loaded %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,37 @@
+<%= form_with(model: tick, local: true) do |form| %>
+  <% if tick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tick.errors.count, "error") %> prohibited this tick from being saved:</h2>
+
+      <ul>
+      <% tick.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :meter_id %>
+    <%= form.number_field :meter_id, id: :tick_meter_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pour_id %>
+    <%= form.number_field :pour_id, id: :tick_pour_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.text_field :count, id: :tick_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reported_at %>
+    <%= form.datetime_select :reported_at, id: :tick_reported_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @tick.machine.serial_number %>
+</p>
+
+<p>
+  <strong>Meter:</strong>
+  <%= @tick.meter_number %>
+</p>
+
+<p>
+  <strong>Pour:</strong>
+  <%= @tick.pour_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @tick.count %>
+</p>
+
+<p>
+  <strong>Reported at:</strong>
+  <%= @tick.reported_at %>
+</p>
+
+<%= link_to 'Edit', edit_tick_path(@tick) %> |
+<%= link_to 'Back', ticks_path %>
