@@ -9,20 +9,26 @@
       <th scope='col'>Version</th>
       <th scope='col'>Location</th>
       <th scope='col'>Taps</th>
+      <th scope='col'>Avg Daily Pour</th>
+      <th scope='col'>Avg Pour Size</th>
       <th scope='col'>Remaining Load</th>
       <th scope='col'>Date Last Loaded</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @smartaps.each do |tap| %>
+    <% @smartaps.each do |machine| %>
       <tr>
-        <td><%= tap.serial_number %></td>
-        <td><%= tap.version %></td>
-        <td><%= tap.last_location_name %></td>
-        <td><%= tap.meter_count %></td>
-        <td><%= tap.ounces_remaining %></td>
-        <td><%= tap.last_loaded %></td>
+        <td><%= machine.serial_number %></td>
+        <td><%= machine.version %></td>
+        <td><%= machine.last_location_name %></td>
+        <% machine.loads do |tap| %>
+          <td><%= tap.meter_number %></td>
+          <td><%= tap.avg_daily %></td>
+          <td><%= tap.avg_size %></td>
+          <td><%= tap.ounces_remaining %></td>
+          <td><%= tap.last_loaded %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
