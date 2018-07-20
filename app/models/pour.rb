@@ -22,6 +22,7 @@ class Pour < ApplicationRecord
   end
 
   def ticks_per_ounce
-    load.machine.calibration_for_meter(load.meter_number) || TICKS_PER_OZ
+    calibration = load.machine.calibration_for_meter(load.meter_number)
+    (calibration && calibration.constant) || TICKS_PER_OZ
   end
 end

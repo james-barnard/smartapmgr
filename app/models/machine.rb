@@ -12,7 +12,7 @@ class Machine < ApplicationRecord
   end
 
   def calibration_for_meter(meter_number)
-    calibrations.select(:constant).where(meter_number: meter_number).first.constant
+    calibrations.select(:constant).where(meter_number: meter_number).first
   end
 
   def current_placement
