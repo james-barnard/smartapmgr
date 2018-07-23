@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   resources :placements
   resources :machines
   resources :locations
-  root to: 'visitors#index'
   devise_for :users
   resources :users
 
-
   get 'static_pages/help'
-  root 'smartaps#dashboard'
+
+  authenticated :user do
+    root 'smartaps#dashboard' , as: :authenticated_root
+  end
+
+  root to: 'visitors#index'
 end

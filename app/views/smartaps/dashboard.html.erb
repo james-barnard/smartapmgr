@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<h1>SmarTaps Installed</h1>
+<% if current_user.role == "admin" %>
+  <h1>SmarTAPs Installed</h1>
+<% end %>
 
 <table class='table'>
   <thead>
     <tr>
       <th scope='col'>Serial number</th>
-      <th scope='col'>Version</th>
       <th scope='col'>Location</th>
-      <th scope='col'>Taps</th>
-      <th scope='col'>Avg Daily Pour</th>
-      <th scope='col'>Avg Pour Size</th>
-      <th scope='col'>Remaining Load</th>
+      <th scope='col'>Tap</th>
+      <th scope='col'>Avg Pours (per day)</th>
+      <th scope='col'>Avg Size (ounces)</th>
+      <th scope='col'>Remaining (ounces/days)</th>
       <th scope='col'>Date Last Loaded</th>
     </tr>
   </thead>
@@ -21,12 +21,11 @@
       <% machine.loads.each do |tap| %>
         <tr>
           <td><%= tap.machine.serial_number %></td>
-          <td><%= tap.machine.version %></td>
           <td><%= tap.machine.last_location_name %></td>
           <td><%= tap.meter_number %></td>
-          <td><%= tap.avg_daily.round(1) %></td>
+          <td><%= tap.avg_daily.round %></td>
           <td><%= tap.avg_size.round(1) %></td>
-          <td><%= tap.ounces_remaining %></td>
+          <td><%= tap.ounces_remaining.round %> / 2</td>
           <td><%= tap.loaded_at %></td>
         </tr>
       <% end %>

@@ -1,0 +1,11 @@
+<div class="card mx-auto" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Welcome to NOKA SmarTAP Manager</h5>
+    <% if current_user %>
+      <p class='card-text'><%= current_user.email %></p>
+    <% else %>
+      <p class='card-text'>You're not logged in.</p>
+    <% end %>
+    <p class="card-text">Sign in to see your dashboard or contact NOKA for a login.</p>
+  </div>
+</div>

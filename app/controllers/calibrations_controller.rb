@@ -1,4 +1,5 @@
 class CalibrationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_calibration, only: [:show, :edit, :update, :destroy]
 
   # GET /calibrations

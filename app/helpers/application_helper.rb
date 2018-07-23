@@ -7,4 +7,9 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def logged_in_as(user)
+    role = user && user.try(:role)
+    role ? "Logged In as role: #{role}" : "Not Logged In"
+  end
 end
