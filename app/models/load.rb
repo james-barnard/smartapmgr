@@ -22,11 +22,15 @@ class Load < ApplicationRecord
   def avg_daily
     days = days_loaded
     days > 0 ? days : 1
-    total_poured / days_loaded
+    total_poured / days
   end
 
   def avg_size
     count = pours.count
     total_poured / (count > 0 ? count : 1)
+  end
+
+  def days_remaining
+    ounces_remaining / (avg_daily * avg_size)
   end
 end

@@ -13,8 +13,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 gem 'high_voltage'
 gem 'jquery-rails'
-gem 'pg'
 gem 'httparty', '~> 0.14.0'
+gem 'pg'
 
 
 group :development, :test do

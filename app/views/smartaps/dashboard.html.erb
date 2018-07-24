@@ -6,29 +6,29 @@
 <table class='table'>
   <thead>
     <tr>
-      <th scope='col'>Serial number</th>
-      <th scope='col'>Location</th>
+      <th scope='col'>Serial Number</th>
+      <th scope='col'><%= sortable 'location', 'Location'%></th>
       <th scope='col'>Tap</th>
-      <th scope='col'>Avg Pours (per day)</th>
-      <th scope='col'>Avg Size (ounces)</th>
-      <th scope='col'>Remaining (ounces/days)</th>
-      <th scope='col'>Date Last Loaded</th>
+      <th scope='col'><%= sortable 'product', 'Product'%></th>
+      <th scope='col'><%= sortable 'avg_daily', 'Avg Pours (per day)'%></th>
+      <th scope='col'><%= sortable 'avg_size', 'Avg Size (ounces)'%></th>
+      <th scope='col'><%= sortable 'days_remaining', 'Remaining (ounces/days)'%></th>
+      <th scope='col'><%= sortable 'last_loaded', 'Date Last Loaded'%></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @smartaps.each do |machine| %>
-      <% machine.loads.each do |tap| %>
-        <tr>
-          <td><%= tap.machine.serial_number %></td>
-          <td><%= tap.machine.last_location_name %></td>
-          <td><%= tap.meter_number %></td>
-          <td><%= tap.avg_daily.round %></td>
-          <td><%= tap.avg_size.round(1) %></td>
-          <td><%= tap.ounces_remaining.round %> / 2</td>
-          <td><%= tap.loaded_at %></td>
-        </tr>
-      <% end %>
+    <% @smartaps.each do |tap| %>
+      <tr>
+        <td><%= tap[:serial_number] %></td>
+        <td><%= tap[:location] %></td>
+        <td><%= tap[:tap] %></td>
+        <td><%= tap[:product] %></td>
+        <td><%= tap[:avg_daily].round %></td>
+        <td><%= tap[:avg_size].round(1) %></td>
+        <td><%= remaining(tap) %></td>
+        <td><%= std_date(tap[:last_loaded]) %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

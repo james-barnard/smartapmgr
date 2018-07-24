@@ -26,7 +26,7 @@ class Machine < ApplicationRecord
 
   def last_location_name
     return nil if last_location.nil?
-    last_location.name
+    last_location.display_name
   end
 
   def ounces_remaining
