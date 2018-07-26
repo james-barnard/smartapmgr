@@ -6,7 +6,7 @@ class Machine < ApplicationRecord
   has_many :ticks
   has_many :calibrations
   validates :serial_number, :presence => true
-  MIN_SEC_BETWEEN_POURS = 3
+  MIN_SEC_BETWEEN_POURS = 5
 
   class MachineNewPourFailed < StandardError
   end
