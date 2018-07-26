@@ -1,6 +1,7 @@
 require 'httparty'
 
 class ParticleController < ApplicationController
+  skip_before_action :authenticate_user!
   include HTTParty
   protect_from_forgery except: :pour
 
