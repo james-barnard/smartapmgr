@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   post 'particle/pour'
   get 'dashboard', to: 'smartaps#dashboard'
+  get 'edit_smartap', to: 'smartaps#edit'
 
   resources :calibrations
   resources :ticks

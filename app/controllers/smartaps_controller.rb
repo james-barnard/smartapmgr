@@ -7,6 +7,7 @@ class SmartapsController < ApplicationController
     taps = installed.map do |m|
       m.loads.map do |t|
         {
+          machine_id: m.id,
           serial_number: t.machine.serial_number,
           location: t.machine.last_location_name,
           tap: t.meter_number,
@@ -22,6 +23,11 @@ class SmartapsController < ApplicationController
 
     @smartaps = taps.sort! { |a,b| a[sort_column.to_sym] <=> b[sort_column.to_sym] }
     @smartaps = @smartaps.reverse! if sort_direction == 'desc'
+  end
+
+  def edit
+    @machine = Machine.find params[:machine_id]
+    @load = @machine.loads.build
   end
 
   private

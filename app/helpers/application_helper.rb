@@ -23,4 +23,8 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
+
+  def display_tap(tap)
+    %w[red blue][tap -1]
+  end
 end

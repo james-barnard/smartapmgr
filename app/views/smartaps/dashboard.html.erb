@@ -14,20 +14,23 @@
       <th scope='col'><%= sortable 'avg_size', 'Avg Size (ounces)'%></th>
       <th scope='col'><%= sortable 'days_remaining', 'Remaining (ounces/days)'%></th>
       <th scope='col'><%= sortable 'last_loaded', 'Date Last Loaded'%></th>
+      <th scope='col'>Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @smartaps.each do |tap| %>
+    <% @smartaps.each do |load| %>
+      <% tap = display_tap(load[:tap]) %>
       <tr>
-        <td><%= tap[:serial_number] %></td>
-        <td><%= tap[:location] %></td>
-        <td><%= tap[:tap] %></td>
-        <td><%= tap[:product] %></td>
-        <td><%= tap[:avg_daily].round %></td>
-        <td><%= tap[:avg_size].round(1) %></td>
-        <td><%= remaining(tap) %></td>
-        <td><%= std_date(tap[:last_loaded]) %></td>
+        <td><%= load[:serial_number] %></td>
+        <td><%= load[:location] %></td>
+        <td class='<%=tap%>'><%= tap %></td>
+        <td><%= load[:product] %></td>
+        <td><%= load[:avg_daily].round %></td>
+        <td><%= load[:avg_size].round(1) %></td>
+        <td><%= remaining(load) %></td>
+        <td><%= std_date(load[:last_loaded]) %></td>
+        <td><%= link_to 'Edit', edit_smartap_path(load) %></td>
       </tr>
     <% end %>
   </tbody>
