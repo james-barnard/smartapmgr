@@ -3,6 +3,7 @@ class Machine < ApplicationRecord
   has_many :placements
   has_many :locations, :through => :placements
   has_many :loads
+  has_many :products, :through => :loads
   has_many :ticks
   has_many :calibrations
   validates :serial_number, :presence => true
@@ -31,6 +32,15 @@ class Machine < ApplicationRecord
 
   def ounces_remaining
     loads.inject(0) { |sum, load| sum + load.ounces_remaining }
+  end
+
+  def unload(load)
+    current = current_load(load.meter_number)
+    current && current.update(removed_at: load.loaded_at)
+  end
+
+  def current_load(meter_number)
+    loads.where(meter_number: meter_number).first
   end
 
   def current_loads
