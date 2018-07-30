@@ -1,7 +1,7 @@
 <%= form_for(load) do |form| %>
 
   <%= form.hidden_field :machine_id, :value => load[:machine_id] %>
-  <%= form.hidden_field :meter_number, :value => load[:meter_number] %>
+  <%= form.hidden_field :meter_number, :value => @meter_number %>
 
   <div class="field">
     <%= form.label :product_id %>

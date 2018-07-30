@@ -5,28 +5,31 @@ class SmartapsController < ApplicationController
     owner = Owner.first
     installed = owner.installed
     taps = installed.map do |m|
-      m.loads.map do |t|
+      m.current_loads.map do |load|
         {
           machine_id: m.id,
-          serial_number: t.machine.serial_number,
-          location: t.machine.last_location_name,
-          tap: t.meter_number,
-          product: t.product.name,
-          avg_daily: t.avg_daily,
-          avg_size: t.avg_size,
-          ounces_remaining: t.ounces_remaining,
-          days_remaining: t.days_remaining,
-          last_loaded: t.loaded_at
+          serial_number: load.machine.serial_number,
+          location: load.machine.last_location_name,
+          meter_number: load.meter_number,
+          product: load.product.name,
+          avg_daily: load.avg_daily,
+          avg_size: load.avg_size,
+          ounces_remaining: load.ounces_remaining,
+          days_remaining: load.days_remaining,
+          last_loaded: load.loaded_at
         }
       end
     end.flatten
 
-    @smartaps = taps.sort! { |a,b| a[sort_column.to_sym] <=> b[sort_column.to_sym] }
-    @smartaps = @smartaps.reverse! if sort_direction == 'desc'
+    unless @smartaps.nil?
+      @smartaps = taps.sort! { |a,b| a[sort_column.to_sym] <=> b[sort_column.to_sym] }
+      @smartaps = @smartaps.reverse! if sort_direction == 'desc'
+    end
   end
 
   def edit
     @machine = Machine.find params[:machine_id]
+    @meter_number = params[:meter_number].to_i
     @load = @machine.loads.build
   end
 

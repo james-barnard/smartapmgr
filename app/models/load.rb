@@ -1,4 +1,6 @@
 class Load < ApplicationRecord
+  after_create  :unload_machine
+
   belongs_to :machine
   belongs_to :product
   has_many :pours
@@ -21,7 +23,7 @@ class Load < ApplicationRecord
 
   def avg_daily
     days = days_loaded
-    days > 0 ? days : 1
+    days = days > 0 ? days : 1
     total_poured / days
   end
 
@@ -31,6 +33,11 @@ class Load < ApplicationRecord
   end
 
   def days_remaining
-    ounces_remaining / (avg_daily * avg_size)
+    daily = avg_daily * avg_size
+    ounces_remaining / (daily + 8)
+  end
+
+  def unload_machine
+    machine.unload(self)
   end
 end

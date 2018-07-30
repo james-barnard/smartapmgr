@@ -20,7 +20,7 @@
 
   <tbody>
     <% @smartaps.each do |load| %>
-      <% tap = display_tap(load[:tap]) %>
+      <% tap = display_tap(load[:meter_number]) %>
       <tr>
         <td><%= load[:serial_number] %></td>
         <td><%= load[:location] %></td>
@@ -30,7 +30,7 @@
         <td><%= load[:avg_size].round(1) %></td>
         <td><%= remaining(load) %></td>
         <td><%= std_date(load[:last_loaded]) %></td>
-        <td><%= link_to 'Edit', edit_smartap_path(load) %></td>
+        <td><%= link_to 'Load', edit_smartap_path(load) %></td>
       </tr>
     <% end %>
   </tbody>

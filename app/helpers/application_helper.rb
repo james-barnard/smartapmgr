@@ -25,6 +25,7 @@ module ApplicationHelper
   end
 
   def display_tap(tap)
+    require 'byebug'; byebug unless tap
     %w[red blue][tap -1]
   end
 end
