@@ -4,7 +4,7 @@ class LoadsController < ApplicationController
   # GET /loads
   # GET /loads.json
   def index
-    @loads = Load.all
+    @loads = Load.order(loaded_at: :desc).all
   end
 
   # GET /loads/1
