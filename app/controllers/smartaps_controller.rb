@@ -19,9 +19,11 @@ class SmartapsController < ApplicationController
           last_loaded: load.loaded_at
         }
       end
-    end.flatten || []
+    end.flatten
 
-    unless @smartaps.nil?
+    if taps.nil?
+      @smartaps = []
+    else
       @smartaps = taps.sort! { |a,b| a[sort_column.to_sym] <=> b[sort_column.to_sym] }
       @smartaps = @smartaps.reverse! if sort_direction == 'desc'
     end
